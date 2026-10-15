@@ -1,0 +1,61 @@
+{
+  "name": "@bydtech/agent-guard",
+  "version": "0.1.0",
+  "description": "A small policy layer between an LLM agent and its tools: allow, deny or ask a human before each tool call runs, with argument checks, rate limits and an audit log.",
+  "keywords": [
+    "llm",
+    "agent",
+    "ai-agent",
+    "tool-calling",
+    "function-calling",
+    "guardrails",
+    "policy",
+    "mcp",
+    "human-in-the-loop",
+    "audit-log"
+  ],
+  "homepage": "https://github.com/BYDTechSolutions/agent-guard#readme",
+  "bugs": {
+    "url": "https://github.com/BYDTechSolutions/agent-guard/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BYDTechSolutions/agent-guard.git"
+  },
+  "license": "MIT",
+  "author": "BYD Tech <sales.bydtech@gmail.com> (https://bydtech.in)",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "agent-guard": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.12"
+  }
+}
