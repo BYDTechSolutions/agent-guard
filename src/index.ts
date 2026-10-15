@@ -35,6 +35,13 @@ export {
 export { redact, redactString, DEFAULT_SECRET_KEYS, DEFAULT_SECRET_PATTERNS, type RedactOptions } from './redact.js';
 export { SlidingWindow } from './rate.js';
 export {
+  parseAuditLog,
+  summarizeAudit,
+  formatAuditSummary,
+  type AuditSummary,
+  type DecisionCounts,
+} from './audit.js';
+export {
   fromAnthropic,
   toAnthropicResult,
   toAnthropicMessage,
