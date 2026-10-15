@@ -1,0 +1,35 @@
+{
+  "id": "chatcmpl-B9MHDbslfkBeAs8l4bebGdFOJ6PeG",
+  "object": "chat.completion",
+  "created": 1760600000,
+  "model": "gpt-5",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_12345xyz",
+            "type": "function",
+            "function": { "name": "fetch_url", "arguments": "{\"url\":\"https://api.example.com/v1/status\"}" }
+          },
+          {
+            "id": "call_67890abc",
+            "type": "function",
+            "function": { "name": "fetch_url", "arguments": "{\"url\":\"https://api.example.com@evil.example.net/\"}" }
+          },
+          {
+            "id": "call_broken01",
+            "type": "function",
+            "function": { "name": "fetch_url", "arguments": "{\"url\": \"https://api.exam" }
+          }
+        ]
+      },
+      "finish_reason": "tool_calls"
+    }
+  ],
+  "usage": { "prompt_tokens": 82, "completion_tokens": 61, "total_tokens": 143 }
+}

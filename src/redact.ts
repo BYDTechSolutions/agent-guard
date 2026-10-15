@@ -7,7 +7,8 @@
 export interface RedactOptions {
   /**
    * More property names whose values are replaced whole. Strings match
-   * case-insensitively, ignoring `-` and `_`; regular expressions are tested as is.
+   * case-insensitively, ignoring `-` and `_`, and names of five or more characters
+   * also match as a suffix; regular expressions are tested as is.
    */
   keys?: (string | RegExp)[];
   /** More patterns replaced inside any string value. Use the `g` flag. */
@@ -18,7 +19,10 @@ export interface RedactOptions {
   maxStringLength?: number;
 }
 
-/** Property names whose values are always replaced, compared without case, `-` or `_`. */
+/**
+ * Property names whose values are always replaced, compared without case, `-` or `_`.
+ * Names of five or more characters also match as a suffix (`x-api-key`, `db_password`).
+ */
 export const DEFAULT_SECRET_KEYS: readonly string[] = [
   'password', 'passwd', 'pwd', 'secret', 'clientsecret', 'token', 'accesstoken', 'refreshtoken',
   'idtoken', 'apikey', 'apisecret', 'authorization', 'auth', 'cookie', 'setcookie', 'privatekey',
@@ -72,10 +76,19 @@ export function redact(value: unknown, options: RedactOptions = {}): unknown {
     if (typeof k === 'string') keySet.add(squash(k));
     else keyPatterns.push(k);
   }
-  const isSecretKey = (key: string) => keySet.has(squash(key)) || keyPatterns.some((p) => {
-    p.lastIndex = 0;
-    return p.test(key);
-  });
+  // Long names also match as a suffix (`x-api-key`, `db_password`); short ones only exactly.
+  const suffixes = [...keySet].filter((k) => k.length >= 5);
+  const isSecretKey = (key: string) => {
+    const k = squash(key);
+    return (
+      keySet.has(k) ||
+      suffixes.some((s) => k.endsWith(s)) ||
+      keyPatterns.some((p) => {
+        p.lastIndex = 0;
+        return p.test(key);
+      })
+    );
+  };
   const seen = new WeakSet<object>();
 
   const walk = (v: unknown): unknown => {

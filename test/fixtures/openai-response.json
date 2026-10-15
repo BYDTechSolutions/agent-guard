@@ -1,0 +1,26 @@
+{
+  "id": "resp_67ccd2bed1ec8190b14f964abc054267",
+  "object": "response",
+  "created_at": 1760600000,
+  "status": "completed",
+  "model": "gpt-5",
+  "output": [
+    { "id": "rs_67ccd3", "type": "reasoning", "summary": [] },
+    {
+      "id": "fc_12345xyz",
+      "type": "function_call",
+      "status": "completed",
+      "call_id": "call_12345xyz",
+      "name": "run_sql",
+      "arguments": "{\"sql\":\"SELECT id, email FROM users WHERE created_at > '2026-01-01' LIMIT 10\"}"
+    },
+    {
+      "id": "fc_67890abc",
+      "type": "function_call",
+      "status": "completed",
+      "call_id": "call_67890abc",
+      "name": "run_sql",
+      "arguments": "{\"sql\":\"SELECT 1; DROP TABLE users\"}"
+    }
+  ]
+}

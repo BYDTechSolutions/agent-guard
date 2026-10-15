@@ -21,11 +21,11 @@ export interface JsonSchema {
   exclusiveMinimum?: number;
   exclusiveMaximum?: number;
   // objects
-  properties?: Record<string, JsonSchema>;
+  properties?: Record<string, JsonSchema | boolean>;
   required?: readonly string[];
   additionalProperties?: boolean | JsonSchema;
   // arrays
-  items?: JsonSchema;
+  items?: JsonSchema | boolean;
   minItems?: number;
   maxItems?: number;
   // annotations, accepted and ignored
