@@ -1,6 +1,6 @@
 {
   "name": "@bydtech/agent-guard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A small policy layer between an LLM agent and its tools: allow, deny or ask a human before each tool call runs, with argument checks, rate limits and an audit log.",
   "keywords": [
     "llm",

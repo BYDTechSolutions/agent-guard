@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-21
+
+### Changed
+
+- Published from GitHub Actions through npm trusted publishing, with a
+  provenance attestation linking the package to this repository. No code changes.
+
 ## [0.1.0] - 2026-10-16
 
 ### Added
@@ -19,5 +26,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Audit records for every decision and approval, with secrets redacted, to `onDecision` and an optional JSONL file.
 - CLI: `agent-guard check` dry-runs a call against a policy module; `agent-guard audit` summarizes an audit log.
 
-[Unreleased]: https://github.com/BYDTechSolutions/agent-guard/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/BYDTechSolutions/agent-guard/releases/tag/v0.1.0
+[Unreleased]: https://github.com/BYDTechSolutions/agent-guard/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/BYDTechSolutions/agent-guard/releases/tag/v0.1.1
+[0.1.0]: https://github.com/BYDTechSolutions/agent-guard/tree/07c24d0e79fe23c51ad5d0c832000c3dcf21d1b4
